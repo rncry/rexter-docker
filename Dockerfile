@@ -11,6 +11,8 @@ RUN unzip rexster-server-2.6.0.zip
 RUN rm rexster-server-2.6.0.zip
 RUN mv rexster-server-2.6.0 rexster-server
 
+ADD rexter.xml /rexter-server/config/rexter.xml
+
 # Server listening port
 EXPOSE 8182
 
@@ -22,4 +24,4 @@ EXPOSE 8183
 WORKDIR rexster-server
 
 ## Entrypoint
-ENTRYPOINT ["bin/rexster.sh", "--start"]
+ENTRYPOINT ["bin/rexster.sh", "--start", "-c", "/rexter-server/config/rexter.xml"]
