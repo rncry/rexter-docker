@@ -1,18 +1,15 @@
 # Tinkerpop Rexster Server
 #
 
-FROM ubuntu
-MAINTAINER Konrad Eriksson "konrad@konraderiksson.com"
+FROM centos
 
 # Install unzip so we later can unpack
-RUN apt-get -y install unzip
+RUN yum install -y java unzip
 
-# Rexster requires Java 7 to run
-RUN apt-get -y install openjdk-7-jre-headless
-ADD http://tinkerpop.com/downloads/rexster/rexster-server-2.5.0.zip /
-RUN unzip rexster-server-2.5.0.zip
-RUN rm rexster-server-2.5.0.zip
-RUN mv rexster-server-2.5.0 rexster-server
+ADD http://tinkerpop.com/downloads/rexster/rexster-server-2.6.0.zip /
+RUN unzip rexster-server-2.6.0.zip
+RUN rm rexster-server-2.6.0.zip
+RUN mv rexster-server-2.6.0 rexster-server
 
 # Server listening port
 EXPOSE 8182
