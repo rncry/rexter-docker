@@ -9,11 +9,11 @@ RUN yum install -y java unzip
 ADD http://s3.thinkaurelius.com/downloads/titan/titan-0.5.3-hadoop2.zip /
 RUN unzip titan-0.5.3-hadoop2.zip
 RUN rm titan-0.5.3-hadoop2.zip
-RUN mv titan-server-0.5.3 /opt/
-RUN ln -s /opt/titan-server-0.5.3 /opt/titan
+RUN mv titan-0.5.3-hadoop2 /opt/
+RUN ln -s /opt/titan-0.5.3-hadoop2 /opt/titan
 
 ADD titan-cassandra.properties /opt/titan/conf/titan-cassandra.properties
-ADD rexter-cassandra.xml /opt/titan/rexhome/config/rexter-cassandra.xml
+ADD rexster-cassandra.xml /opt/titan/rexhome/config/rexster-cassandra.xml
 
 # Server listening port
 EXPOSE 8182
@@ -26,4 +26,4 @@ EXPOSE 8183
 WORKDIR /opt/titan
 
 ## Entrypoint
-ENTRYPOINT ["bin/rexster.sh", "--start", "-c", "/opt/titan/rexhom/config/rexter-cassandra.xml"]
+ENTRYPOINT ["bin/rexster.sh", "--start", "-c", "/opt/titan/rexhome/config/rexster-cassandra.xml"]
