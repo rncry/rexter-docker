@@ -16,7 +16,7 @@ ADD titan-cassandra.properties /opt/titan/conf/titan-cassandra.properties
 ADD rexster-cassandra.xml /opt/titan/rexhome/config/rexster-cassandra.xml
 
 # Server listening port
-EXPOSE 8182
+EXPOSE 80:8182
 
 # RexPro port
 EXPOSE 8184
